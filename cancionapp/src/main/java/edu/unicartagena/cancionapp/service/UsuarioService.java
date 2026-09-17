@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UsuarioService {
@@ -36,5 +37,25 @@ public class UsuarioService {
 
     public void eliminar(Long id) {
         usuarioRepository.deleteById(id);
+    }
+
+    public String generarTokenRecuperacion(String email) {
+        Usuario usuario = usuarioRepository.findByEmail(email).orElse(null);
+        if (usuario == null) return null;
+
+        String token = UUID.randomUUID().toString();
+        usuario.setTokenRecuperacion(token);
+        usuarioRepository.save(usuario);
+        return token;
+    }
+
+    public Optional<Usuario> buscarPorToken(String token) {
+        return usuarioRepository.findByTokenRecuperacion(token);
+    }
+
+    public void restablecerClave(Usuario usuario, String nuevaClaveEncriptada) {
+        usuario.setClave(nuevaClaveEncriptada);
+        usuario.setTokenRecuperacion(null);
+        usuarioRepository.save(usuario);
     }
 }

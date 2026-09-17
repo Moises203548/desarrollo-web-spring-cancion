@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Recuperar Clave</title></head>
+<body>
+<h1>Recuperar Clave</h1>
+<p th:if="${mensaje}" th:text="${mensaje}" style="color:green"></p>
+<form th:action="@{/recuperar-clave}" method="post">
+    <label>Correo registrado:</label>
+    <input type="email" name="email" required />
+    <button type="submit">Enviar enlace de recuperación</button>
+</form>
+<a th:href="@{/login}">Volver al login</a>
+</body>
+</html>

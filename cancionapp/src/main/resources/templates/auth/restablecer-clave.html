@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Restablecer Clave</title></head>
+<body>
+<h1>Restablecer Clave</h1>
+<p th:if="${error}" th:text="${error}" style="color:red"></p>
+<form th:action="@{/recuperar-clave/restablecer}" method="post">
+    <input type="hidden" name="token" th:value="${token}" />
+    <label>Nueva clave:</label>
+    <input type="password" name="nuevaClave" required />
+    <button type="submit">Restablecer</button>
+</form>
+</body>
+</html>
