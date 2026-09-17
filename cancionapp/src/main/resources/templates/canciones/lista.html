@@ -10,6 +10,9 @@
 </form>
 <h1>Canciones</h1>
 <a th:href="@{/canciones/nueva}">Agregar nueva canción</a>
+<br>
+<a th:href="@{/canciones/reportes/por-banda}">Reporte por Banda</a> |
+<a th:href="@{/canciones/reportes/por-album}">Reporte por Álbum</a>
 <table border="1">
     <tr>
         <th>Nombre</th>
@@ -26,6 +29,7 @@
             <a th:href="@{/canciones/{id}/editar(id=${cancion.id})}">Editar</a> |
             <a th:href="@{/canciones/{id}/eliminar(id=${cancion.id})}">Eliminar</a>
         </td>
+        <a th:href="@{/usuarios}">Ir a Usuarios</a>
     </tr>
 </table>
 </body>

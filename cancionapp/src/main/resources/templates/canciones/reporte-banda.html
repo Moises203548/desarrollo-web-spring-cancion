@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte: Canciones por Banda</title>
+</head>
+<body>
+<h1>Reporte de Canciones por Banda</h1>
+
+<form method="get" th:action="@{/canciones/reportes/por-banda}">
+    <label>Banda:</label>
+    <input type="text" name="banda" th:value="${bandaBuscada}" placeholder="Ej: Metallica" />
+    <button type="submit">Buscar</button>
+</form>
+
+<table border="1" th:if="${canciones != null}">
+    <tr>
+        <th>Nombre</th>
+        <th>Álbum</th>
+        <th>Ritmo</th>
+        <th>Fecha lanzamiento</th>
+    </tr>
+    <tr th:each="cancion : ${canciones}">
+        <td th:text="${cancion.nombre}"></td>
+        <td th:text="${cancion.album}"></td>
+        <td th:text="${cancion.ritmo}"></td>
+        <td th:text="${cancion.fechaLanzamiento}"></td>
+    </tr>
+</table>
+
+<p th:if="${canciones != null and #lists.isEmpty(canciones)}">No se encontraron canciones para esa banda.</p>
+
+<a th:href="@{/canciones}">Volver al listado</a>
+</body>
+</html>

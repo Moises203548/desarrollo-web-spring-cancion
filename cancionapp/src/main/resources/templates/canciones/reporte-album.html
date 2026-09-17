@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte: Canciones por Álbum</title>
+</head>
+<body>
+<h1>Reporte de Canciones por Álbum</h1>
+
+<form method="get" th:action="@{/canciones/reportes/por-album}">
+    <label>Álbum:</label>
+    <input type="text" name="album" th:value="${albumBuscado}" placeholder="Ej: Black Album" />
+    <button type="submit">Buscar</button>
+</form>
+
+<table border="1" th:if="${canciones != null}">
+    <tr>
+        <th>Nombre</th>
+        <th>Banda</th>
+        <th>Posición en álbum</th>
+        <th>Duración (seg)</th>
+    </tr>
+    <tr th:each="cancion : ${canciones}">
+        <td th:text="${cancion.nombre}"></td>
+        <td th:text="${cancion.banda}"></td>
+        <td th:text="${cancion.posicionEnAlbum}"></td>
+        <td th:text="${cancion.duracion}"></td>
+    </tr>
+</table>
+
+<p th:if="${canciones != null and #lists.isEmpty(canciones)}">No se encontraron canciones para ese álbum.</p>
+
+<a th:href="@{/canciones}">Volver al listado</a>
+</body>
+</html>l>

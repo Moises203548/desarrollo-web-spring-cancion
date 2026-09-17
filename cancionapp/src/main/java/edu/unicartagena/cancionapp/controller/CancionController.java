@@ -48,4 +48,22 @@ public class CancionController {
         cancionService.eliminar(id);
         return "redirect:/canciones";
     }
+
+    @GetMapping("/reportes/por-banda")
+    public String reportePorBanda(@RequestParam(required = false) String banda, Model model) {
+        if (banda != null && !banda.isBlank()) {
+            model.addAttribute("canciones", cancionService.buscarPorBanda(banda));
+        }
+        model.addAttribute("bandaBuscada", banda);
+        return "canciones/reporte-banda";
+    }
+
+    @GetMapping("/reportes/por-album")
+    public String reportePorAlbum(@RequestParam(required = false) String album, Model model) {
+        if (album != null && !album.isBlank()) {
+            model.addAttribute("canciones", cancionService.buscarPorAlbum(album));
+        }
+        model.addAttribute("albumBuscado", album);
+        return "canciones/reporte-album";
+    }
 }
