@@ -5,6 +5,9 @@
     <title>Listado de Usuarios</title>
 </head>
 <body>
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Cerrar sesión</button>
+</form>
 <h1>Usuarios</h1>
 <a th:href="@{/usuarios/nuevo}">Agregar nuevo usuario</a>
 <table border="1">

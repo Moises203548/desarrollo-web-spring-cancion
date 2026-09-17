@@ -5,6 +5,9 @@
     <title>Listado de Canciones</title>
 </head>
 <body>
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Cerrar sesión</button>
+</form>
 <h1>Canciones</h1>
 <a th:href="@{/canciones/nueva}">Agregar nueva canción</a>
 <table border="1">
