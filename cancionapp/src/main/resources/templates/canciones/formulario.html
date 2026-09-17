@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Canción</title>
+</head>
+<body>
+<h1 th:text="${cancion.id} != null ? 'Editar Canción' : 'Nueva Canción'"></h1>
+
+<form th:action="@{/canciones/guardar}" th:object="${cancion}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}" required /><br>
+
+    <label>Ritmo:</label>
+    <input type="text" th:field="*{ritmo}" /><br>
+
+    <label>Duración (segundos):</label>
+    <input type="number" th:field="*{duracion}" /><br>
+
+    <label>Álbum:</label>
+    <input type="text" th:field="*{album}" /><br>
+
+    <label>Posición en álbum:</label>
+    <input type="number" th:field="*{posicionEnAlbum}" /><br>
+
+    <label>Banda:</label>
+    <input type="text" th:field="*{banda}" /><br>
+
+    <label>Intérprete:</label>
+    <input type="text" th:field="*{interprete}" /><br>
+
+    <label>Autor:</label>
+    <input type="text" th:field="*{autor}" /><br>
+
+    <label>Fecha de lanzamiento:</label>
+    <input type="date" th:field="*{fechaLanzamiento}" /><br>
+
+    <button type="submit">Guardar</button>
+    <a th:href="@{/canciones}">Cancelar</a>
+</form>
+</body>
+</html>
