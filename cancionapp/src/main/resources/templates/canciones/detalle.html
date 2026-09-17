@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Canción</title>
+</head>
+<body>
+<h1 th:text="${cancion.nombre}"></h1>
+<p><strong>Ritmo:</strong> <span th:text="${cancion.ritmo}"></span></p>
+<p><strong>Duración (seg):</strong> <span th:text="${cancion.duracion}"></span></p>
+<p><strong>Álbum:</strong> <span th:text="${cancion.album}"></span></p>
+<p><strong>Posición en álbum:</strong> <span th:text="${cancion.posicionEnAlbum}"></span></p>
+<p><strong>Banda:</strong> <span th:text="${cancion.banda}"></span></p>
+<p><strong>Intérprete:</strong> <span th:text="${cancion.interprete}"></span></p>
+<p><strong>Autor:</strong> <span th:text="${cancion.autor}"></span></p>
+<p><strong>Fecha de lanzamiento:</strong> <span th:text="${cancion.fechaLanzamiento}"></span></p>
+<a th:href="@{/canciones}">Volver al listado</a>
+</body>
+</html>

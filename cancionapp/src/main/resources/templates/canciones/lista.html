@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Canciones</title>
+</head>
+<body>
+<h1>Canciones</h1>
+<a th:href="@{/canciones/nueva}">Agregar nueva canción</a>
+<table border="1">
+    <tr>
+        <th>Nombre</th>
+        <th>Banda</th>
+        <th>Álbum</th>
+        <th>Acciones</th>
+    </tr>
+    <tr th:each="cancion : ${canciones}">
+        <td th:text="${cancion.nombre}"></td>
+        <td th:text="${cancion.banda}"></td>
+        <td th:text="${cancion.album}"></td>
+        <td>
+            <a th:href="@{/canciones/{id}(id=${cancion.id})}">Ver</a> |
+            <a th:href="@{/canciones/{id}/editar(id=${cancion.id})}">Editar</a> |
+            <a th:href="@{/canciones/{id}/eliminar(id=${cancion.id})}">Eliminar</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
