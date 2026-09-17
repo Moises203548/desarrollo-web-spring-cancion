@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Reporte: Usuarios por Nombre</title></head>
+<body>
+<h1>Reporte de Usuarios por Nombre</h1>
+
+<form method="get" th:action="@{/usuarios/reportes/por-nombre}">
+    <label>Nombre (parcial):</label>
+    <input type="text" name="nombre" th:value="${nombreBuscado}" placeholder="Ej: dan" />
+    <button type="submit">Buscar</button>
+</form>
+
+<table border="1" th:if="${usuarios != null}">
+    <tr><th>Nombre</th><th>Email</th><th>Rol</th></tr>
+    <tr th:each="usuario : ${usuarios}">
+        <td th:text="${usuario.nombre}"></td>
+        <td th:text="${usuario.email}"></td>
+        <td th:text="${usuario.rol}"></td>
+    </tr>
+</table>
+
+<p th:if="${usuarios != null and #lists.isEmpty(usuarios)}">No se encontraron usuarios con ese nombre.</p>
+
+<a th:href="@{/usuarios}">Volver al listado</a>
+</body>
+</html>

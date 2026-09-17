@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Reporte: Usuarios por Rol</title></head>
+<body>
+<h1>Reporte de Usuarios por Rol</h1>
+
+<form method="get" th:action="@{/usuarios/reportes/por-rol}">
+    <label>Rol:</label>
+    <input type="text" name="rol" th:value="${rolBuscado}" placeholder="Ej: ADMIN" />
+    <button type="submit">Buscar</button>
+</form>
+
+<table border="1" th:if="${usuarios != null}">
+    <tr><th>Nombre</th><th>Email</th><th>Rol</th></tr>
+    <tr th:each="usuario : ${usuarios}">
+        <td th:text="${usuario.nombre}"></td>
+        <td th:text="${usuario.email}"></td>
+        <td th:text="${usuario.rol}"></td>
+    </tr>
+</table>
+
+<p th:if="${usuarios != null and #lists.isEmpty(usuarios)}">No se encontraron usuarios con ese rol.</p>
+
+<a th:href="@{/usuarios}">Volver al listado</a>
+</body>
+</html>

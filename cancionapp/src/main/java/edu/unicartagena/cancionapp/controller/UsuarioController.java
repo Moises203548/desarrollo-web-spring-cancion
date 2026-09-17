@@ -49,4 +49,21 @@ public class UsuarioController {
         usuarioService.eliminar(id);
         return "redirect:/usuarios";
     }
+    @GetMapping("/reportes/por-rol")
+    public String reportePorRol(@RequestParam(required = false) String rol, Model model) {
+        if (rol != null && !rol.isBlank()) {
+            model.addAttribute("usuarios", usuarioService.buscarPorRol(rol));
+        }
+        model.addAttribute("rolBuscado", rol);
+        return "usuarios/reporte-rol";
+    }
+
+    @GetMapping("/reportes/por-nombre")
+    public String reportePorNombre(@RequestParam(required = false) String nombre, Model model) {
+        if (nombre != null && !nombre.isBlank()) {
+            model.addAttribute("usuarios", usuarioService.buscarPorNombreParcial(nombre));
+        }
+        model.addAttribute("nombreBuscado", nombre);
+        return "usuarios/reporte-nombre";
+    }
 }

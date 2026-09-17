@@ -25,6 +25,9 @@
             <a th:href="@{/usuarios/{id}(id=${usuario.id})}">Ver</a> |
             <a th:href="@{/usuarios/{id}/editar(id=${usuario.id})}">Editar</a> |
             <a th:href="@{/usuarios/{id}/eliminar(id=${usuario.id})}">Eliminar</a>
+            <br>
+            <a th:href="@{/usuarios/reportes/por-rol}">Reporte por Rol</a> |
+            <a th:href="@{/usuarios/reportes/por-nombre}">Reporte por Nombre</a>
         </td>
     </tr>
 </table>

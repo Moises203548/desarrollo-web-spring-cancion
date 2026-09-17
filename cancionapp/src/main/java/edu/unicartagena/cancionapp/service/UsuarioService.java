@@ -58,4 +58,11 @@ public class UsuarioService {
         usuario.setTokenRecuperacion(null);
         usuarioRepository.save(usuario);
     }
+    public List<Usuario> buscarPorRol(String rol) {
+        return usuarioRepository.findByRolIgnoreCase(rol);
+    }
+
+    public List<Usuario> buscarPorNombreParcial(String nombre) {
+        return usuarioRepository.findByNombreContainingIgnoreCase(nombre);
+    }
 }
